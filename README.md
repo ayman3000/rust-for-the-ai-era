@@ -6,6 +6,16 @@ A beginner-friendly Rust course by **Ayman Hamed** for developers who want to le
 
 This course teaches Rust from the ground up, but always with a builder mentality: clear concepts, runnable examples, recap notes, and interactive quizzes.
 
+## Public Lesson Hub
+
+When GitHub Pages is enabled, the public course hub will be available at:
+
+<https://ayman3000.github.io/rust-for-the-ai-era/>
+
+Lesson 01 quiz:
+
+<https://ayman3000.github.io/rust-for-the-ai-era/lessons/01_data_types/quiz/>
+
 ## Learning Flow
 
 Every lesson follows the same system:
