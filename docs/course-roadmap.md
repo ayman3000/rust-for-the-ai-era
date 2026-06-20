@@ -6,6 +6,7 @@ This course is for beginners who want Rust to become a practical tool for modern
 
 ## Core Path
 
+0. Install Rust and First Program
 1. Data Types
 2. Variables and Mutability
 3. Functions
@@ -21,6 +22,19 @@ This course is for beginners who want Rust to become a practical tool for modern
 13. CLI Tools
 14. APIs and Services
 15. Rust for AI Tooling
+
+## Lesson 00 Scope
+
+Lesson 00 is intentionally short. It introduces:
+
+- installing Rust with `rustup`
+- checking `rustc` and `cargo`
+- `fn main()` as the program entry point
+- `let x = 10;`
+- correct printing with `println!("{x}");`
+- the immutable-by-default rule
+- changing values with `let mut x`
+- copying a simple value with `let y = x`
 
 ## Per-Lesson Deliverables
 

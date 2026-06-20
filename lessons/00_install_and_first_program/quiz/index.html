@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rust First Program Quiz | Ayman Hamed</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Rust for the AI Era · Lesson 00</p>
+        <h1>Install Rust & First Program Quiz</h1>
+        <p class="subtitle">A short warm-up on installing Rust, <code>fn main</code>, <code>let</code>, immutability, <code>mut</code>, copying simple values, and <code>println!</code>.</p>
+        <div class="hero-actions">
+          <button id="startBtn" class="primary-btn">Start Quiz</button>
+          <button id="resetBtn" class="ghost-btn">Reset</button>
+        </div>
+      </div>
+      <aside class="score-card">
+        <span>Progress</span>
+        <strong id="heroScore">0 / 12</strong>
+        <p id="heroStatus">Ready when you are.</p>
+      </aside>
+    </section>
+
+    <section class="quiz-panel">
+      <div class="panel-topline">
+        <div>
+          <p class="small-label" id="questionCounter">Question 1 of 12</p>
+          <h2 id="questionText">Press Start Quiz to begin.</h2>
+        </div>
+        <div class="progress-ring"><span id="progressPercent">0%</span></div>
+      </div>
+      <div class="progress-bar"><div id="progressFill"></div></div>
+      <div id="options" class="options" role="radiogroup" aria-label="Answer choices"></div>
+      <div id="feedback" class="feedback hidden"></div>
+      <div class="quiz-actions">
+        <button id="prevBtn" class="ghost-btn">Previous</button>
+        <button id="nextBtn" class="primary-btn">Next</button>
+      </div>
+    </section>
+
+    <section id="results" class="results hidden">
+      <p class="eyebrow">Final Score</p>
+      <h2>You finished Lesson 00.</h2>
+      <p id="scoreLine" class="subtitle"></p>
+      <div class="results-grid">
+        <div class="metric"><strong id="correctMetric">0</strong><span>Correct</span></div>
+        <div class="metric"><strong id="wrongMetric">0</strong><span>Needs Review</span></div>
+        <div class="metric"><strong id="percentMetric">0%</strong><span>Mastery</span></div>
+      </div>
+      <div id="reviewList" class="review-list"></div>
+      <blockquote class="ayman-note">
+        <strong>Message from Ayman Hamed</strong>
+        <p>Rust is strict from the first line, but that strictness is your safety system. Learn the small rules now, and the bigger concepts become easier.</p>
+      </blockquote>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

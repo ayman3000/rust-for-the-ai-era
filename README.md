@@ -1,6 +1,6 @@
 # Rust for the AI Era
 
-**From ownership to high-performance AI tools.**
+**From first program to ownership and high-performance AI tools.**
 
 A beginner-friendly Rust course by **Ayman Hamed** for developers who want to learn Rust with a practical, modern, AI-era mindset.
 
@@ -11,6 +11,14 @@ This course teaches Rust from the ground up, but always with a builder mentality
 When GitHub Pages is enabled, the public course hub will be available at:
 
 <https://ayman3000.github.io/rust-for-the-ai-era/>
+
+Lesson 00:
+
+<https://ayman3000.github.io/rust-for-the-ai-era/lessons/00_install_and_first_program/>
+
+Lesson 00 quiz:
+
+<https://ayman3000.github.io/rust-for-the-ai-era/lessons/00_install_and_first_program/quiz/>
 
 Lesson 01 quiz:
 
@@ -30,6 +38,7 @@ Every lesson follows the same system:
 
 | # | Lesson | Concept | Quiz |
 |---|--------|---------|------|
+| 00 | [Install Rust & First Program](lessons/00_install_and_first_program/) | `fn main`, `let`, immutability, `mut`, `println!` | [Open quiz](lessons/00_install_and_first_program/quiz/) |
 | 01 | [Data Types](lessons/01_data_types/) | Scalar and compound types | [Open quiz](lessons/01_data_types/quiz/) |
 
 ## Course Promise
