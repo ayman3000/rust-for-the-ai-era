@@ -8,7 +8,7 @@ This course is for beginners who want Rust to become a practical tool for modern
 
 0. Install Rust and First Program
 1. Data Types
-2. Variables and Mutability
+2. Variable Types
 3. Functions
 4. Control Flow
 5. Ownership
@@ -35,6 +35,17 @@ Lesson 00 is intentionally short. It introduces:
 - the immutable-by-default rule
 - changing values with `let mut x`
 - copying a simple value with `let y = x`
+
+## Lesson 02 Scope
+
+Lesson 02 teaches variable types gradually, from simple to advanced:
+
+- type inference with `let age = 30`
+- explicit annotations like `let users: u32 = 120`
+- `parse()` needing a target type such as `u32`
+- `mut` changing values but not types
+- shadowing as a new binding that can change type
+- constants requiring explicit types and `SCREAMING_SNAKE_CASE`
 
 ## Per-Lesson Deliverables
 

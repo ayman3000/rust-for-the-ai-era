@@ -24,6 +24,14 @@ Lesson 01 quiz:
 
 <https://ayman3000.github.io/rust-for-the-ai-era/lessons/01_data_types/quiz/>
 
+Lesson 02:
+
+<https://ayman3000.github.io/rust-for-the-ai-era/lessons/02_variable_types/>
+
+Lesson 02 quiz:
+
+<https://ayman3000.github.io/rust-for-the-ai-era/lessons/02_variable_types/quiz/>
+
 ## Learning Flow
 
 Every lesson follows the same system:
@@ -40,6 +48,7 @@ Every lesson follows the same system:
 |---|--------|---------|------|
 | 00 | [Install Rust & First Program](lessons/00_install_and_first_program/) | `fn main`, `let`, immutability, `mut`, `println!` | [Open quiz](lessons/00_install_and_first_program/quiz/) |
 | 01 | [Data Types](lessons/01_data_types/) | Scalar and compound types | [Open quiz](lessons/01_data_types/quiz/) |
+| 02 | [Variable Types](lessons/02_variable_types/) | Inference, annotations, `mut`, shadowing, constants | [Open quiz](lessons/02_variable_types/quiz/) |
 
 ## Course Promise
 
