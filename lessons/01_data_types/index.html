@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lesson 01 — Rust Data Types</title>
+  <style>
+    :root{--bg:#f8fafc;--paper:#fff;--ink:#0f172a;--muted:#475569;--blue:#2563eb;--orange:#f97316;--line:#e2e8f0;--green:#16a34a;--red:#dc2626}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#fff,var(--bg),#fff7ed);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}
+    main{width:min(1040px,calc(100% - 32px));margin:0 auto;padding:36px 0 64px}.hero,.card{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:28px;box-shadow:0 24px 70px rgba(15,23,42,.08)}
+    .hero{padding:34px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:0 0 auto;height:9px;background:linear-gradient(90deg,var(--blue),#7c3aed,var(--orange))}
+    .eyebrow{color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}h1{font-size:clamp(42px,7vw,78px);line-height:.9;letter-spacing:-.055em;margin:.1em 0}.subtitle{font-size:20px;color:#334155;max-width:820px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:20px}.card{padding:24px}h2{letter-spacing:-.03em;margin-top:0}pre{background:#0d1117;color:#e5e7eb;border-radius:18px;padding:18px;overflow:auto;font-size:15px;line-height:1.55}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.callout{border-left:5px solid var(--green);background:#f0fdf4;border-radius:16px;padding:14px 16px;color:#14532d}.bad{border-left-color:var(--red);background:#fef2f2;color:#7f1d1d}.blue{border-left-color:var(--blue);background:#eff6ff;color:#1e3a8a}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.btn{display:inline-block;border-radius:999px;padding:12px 18px;font-weight:900;text-decoration:none}.primary{background:var(--blue);color:white}.ghost{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}table{border-collapse:collapse;width:100%;overflow:hidden;border-radius:18px;background:white}th,td{border:1px solid var(--line);padding:12px;text-align:left}th{background:#f1f5f9;color:#0f172a}ul{padding-left:1.2rem}
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Rust for the AI Era · Lesson 01</p>
+      <h1>Rust Data Types</h1>
+      <p class="subtitle">Understanding Rust's core building blocks: Scalar types (single values) and Compound types (grouped values), and how Rust infers them.</p>
+      <div class="actions">
+        <a class="btn primary" href="quiz/">Open Quiz</a>
+        <a class="btn ghost" href="examples/main.rs">View Example</a>
+        <a class="btn ghost" href="../../">Back to Course Hub</a>
+      </div
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2 style="color:var(--blue)">1. Scalar Types</h2>
+        <p>Represent a single value. They are the atoms of the language.</p>
+        <pre><code class="language-rust">let integer = 100;     // i32 (default)
+let float = 3.14;       // f64 (default)
+let boolean = true;     // bool
+let character = 'R';    // char (Unicode!)</code></pre>
+        <p class="callout blue">Tip: <code class="language-rust">i32</code> and <code class="language-rust">f64</code> are the defaults. Rust knows them automatically.</p>
+      </article>
+      <article class="card">
+        <h2 style="color:var(--blue)">2. Compound Types</h2>
+        <p>Group multiple values into one type.</p>
+        <pre><code class="language-rust">// Tuple: mixed types, fixed size
+let tup = (500, 6.4, true);
+println!("First value: {tup.0}");
+
+// Array: same type, fixed size
+let arr = [1, 2, 3, 4, 5];
+println!("First value: {arr[0]}");</code></pre>
+        <p class="callout">Arrays in Rust must have a fixed length. If you need a growable list, you will use <code class="language-rust">Vec</code> in later lessons.</p>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2 style="color:var(--blue)">3. Type Inference</h2>
+        <pre><code class="language-rust">let x = 5; // Rust knows it's an integer
+</code></pre>
+        <p>Rust is <strong style="color:var(--blue)">statically typed</strong>. This means the compiler must know the type of every value at compile time. Most of the time, it guesses correctly (inference), keeping your code clean.</p>
+      </article>
+      <article class="card">
+        <h la style="color:var(--blue)">4. Type Annotations</h2>
+        <pre><code class="language-rust">let x: i64 = 5000000000;
+let y: f32 = 3.14;</code></pre>
+        <p>Use annotations when you need a specific size (like <code class="language-rust">i64</code> instead of <code class="language-rust">i32</code>) or when the compiler is ambiguous.</p>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top:20px">
+      <h2 style="color:var(--blue)">Quick Reference Table</h2>
+      <table style="margin-bottom:24px">
+        <thead>
+          <tr><th>Family</th><th>Type</th><th>Example</th><th>Note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Scalar</td><td>Integer</td><td><code class="language-rust">i32, u64</code></td><td>Signed (i) vs Unsigned (u)</td></tr>
+          <tr><td>Scalar</td><td>Float</td><td><code class="language-rust">f64, f32</code></td><td>Decimal points</td></tr>
+          <tr><td>Scalar</td><td>Boolean</td><td><code class="language-rust">bool</code></td><td>true / false</td></tr>
+          <tr><td>Scalar</td><td>Character</td><td><code class="language-rust">char</code></td><td>Unicode scalar (e.g. '🚀')</td></tr>
+          <tr><td>Compound</td><td>Tuple</td><td><code class="language-rust">(i32, f64)</code></td><td>Mixed types, accessed via <code class="language-rust">.0, .1</code></td></tr>
+          <tr><td>Compound</td><td>Array</td><td><code class="language-rust">[i32; 3]</code></td><td>Same type, accessed via <code class="language-rust">[0]</code></td></tr>
+        </tbody>
+      </table>
+      <h2 style="color:var(--blue)">Recap</h2>
+      <ul>
+        <li><strong style="color:var(--blue)">Scalar:</strong> One value (Int, Float, Bool, Char).</li>
+        <li><strong style="color:var(--blue)">Compound:</strong> Grouped values (Tuples, Arrays).</li>
+        <li><strong style="color:var(--blue)">Static Typing:</strong> Types are fixed at compile time.</li>
+        <li><strong style="color:var(--blue)">Inference:</strong> Rust usually guesses the type for you.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
