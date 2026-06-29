@@ -159,10 +159,13 @@ rustc main.rs -o lesson00
 ./lesson00
 ```
 
-To intentionally see the compiler error about immutability:
+## Try the intentional errors
+
+These files are supposed to fail. They teach you how Rust protects your program:
 
 ```bash
-rustc immutable_error.rs
+rustc immutable_error.rs            # x = 5 on an immutable variable
+rustc immutable_increment_error.rs   # x = x + 1 on an immutable variable
 ```
 
-That file is supposed to fail. The compiler message is part of the lesson.
+The compiler message is part of the lesson.
