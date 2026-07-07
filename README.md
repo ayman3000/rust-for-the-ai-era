@@ -1,10 +1,12 @@
 # Rust for the AI Era
 
-**From first program to ownership and high-performance AI tools.**
+**Learn Rust by building useful local AI tools with Ollama.**
 
-A beginner-friendly Rust course by **Ayman Hamed** for developers who want to learn Rust with a practical, modern, AI-era mindset.
+A beginner-friendly Rust course by **Ayman Hamed** for developers who want Rust to feel practical in the AI era.
 
-This course teaches Rust from the ground up, but always with a builder mentality: clear concepts, runnable examples, recap notes, and interactive quizzes.
+This is not a traditional Rust course. The first lessons build a small Rust survival kit, then the course pivots into Ollama-powered projects: local prompts, JSON requests, error handling, file summarizers, code explainers, simple retrieval, streaming responses, and a mini AI agent loop.
+
+The teaching strategy is simple but impactful: build a small useful example, run it, explain the Rust concept inside it, show what can fail, then improve it gradually.
 
 ## Public Lesson Hub
 
@@ -49,6 +51,24 @@ Every lesson follows the same system:
 | 00 | [Install Rust & First Program](lessons/00_install_and_first_program/) | `fn main`, `let`, immutability, `mut`, `println!` | [Open quiz](lessons/00_install_and_first_program/quiz/) |
 | 01 | [Data Types](lessons/01_data_types/) | Scalar and compound types | [Open quiz](lessons/01_data_types/quiz/) |
 | 02 | [Variable Types](lessons/02_variable_types/) | Inference, annotations, `mut`, shadowing, constants | [Open quiz](lessons/02_variable_types/quiz/) |
+| 03 | Functions for AI Utilities | parameters, return values, prompt helper functions | planned |
+| 04 | Control Flow for Prompt Decisions | `if`, loops, beginner `match`, prompt validation | planned |
+| 05 | Ownership: Who Owns the Data? | move, clone, scope, `String`, drop | planned |
+| 06 | Borrowing: Passing Prompts Without Copies | references, `&T`, `&mut T`, borrowing rules | planned |
+| 07 | First Ollama Request from Rust | Cargo crates, `reqwest`, `serde_json`, local inference | planned |
+| 08 | Structs by Modeling Ollama JSON | request/response structs, `Serialize`, `Deserialize` | planned |
+| 09 | Error Handling When Ollama Fails | `Result`, `?`, readable runtime errors | planned |
+| 10 | Enums by Creating AI Task Types | task variants, `match`, prompt routing | planned |
+| 11 | Collections by Building Prompt History | `Vec`, chat history, context | planned |
+| 12 | Traits by Swapping AI Backends | `trait`, `impl`, Ollama vs mock model | planned |
+| 13 | Modules by Organizing the Ollama Client | `mod`, `pub`, project structure | planned |
+| 14 | AI File Summarizer | file I/O, CLI arguments, local summarization | planned |
+| 15 | Rust Code Explainer | source reading, multiline prompts, local coding assistant | planned |
+| 16 | Notes Q&A with Simple Retrieval | directories, scoring, context injection | planned |
+| 17 | Streaming Responses and Async Rust | `async`, `.await`, token streaming | planned |
+| 18 | Mini AI Agent Loop | Think → Act → Observe, safety limit | planned |
+| 19 | Tools for the Agent | safe local tools, dispatch, observations | planned |
+| 20 | Final Project: Local Rust AI Assistant | complete Ollama-powered CLI assistant | planned |
 
 ## Course Promise
 
