@@ -6,14 +6,13 @@
   <title>Rust for the AI Era</title>
   <style>
     body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:0;background:#f8fafc;color:#0f172a}
-    .wrap{max-width:1040px;margin:0 auto;padding:56px 24px}
+    .wrap{max-width:1120px;margin:0 auto;padding:56px 24px}
     .hero{background:white;border:1px solid #e2e8f0;border-radius:28px;padding:36px;box-shadow:0 24px 70px rgba(15,23,42,.1);position:relative;overflow:hidden}
     .hero:before{content:"";position:absolute;inset:0 0 auto;height:9px;background:linear-gradient(90deg,#2563eb,#7c3aed,#f97316)}
     h1{font-size:clamp(48px,8vw,88px);line-height:.9;margin:0 0 18px;letter-spacing:-.055em}
-    .subtitle{font-size:21px;color:#334155;line-height:1.55}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:24px}
-    .card{display:block;background:white;color:#0f172a;text-decoration:none;border:1px solid #e2e8f0;border-radius:22px;padding:24px;box-shadow:0 14px 34px rgba(15,23,42,.06)}
-    .card strong{font-size:24px}.card p{color:#475569;line-height:1.55}.pill{display:inline-block;margin-top:12px;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:999px;padding:8px 12px;font-weight:800}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    h2{font-size:30px;margin:34px 0 10px;letter-spacing:-.03em}.subtitle{font-size:21px;color:#334155;line-height:1.55;max-width:900px}.phase-note{color:#64748b;margin:0 0 18px;line-height:1.55}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:18px}.card{display:block;background:white;color:#0f172a;text-decoration:none;border:1px solid #e2e8f0;border-radius:22px;padding:24px;box-shadow:0 14px 34px rgba(15,23,42,.06)}
+    .card strong{font-size:22px;line-height:1.18;display:block}.card p{color:#475569;line-height:1.55}.pill{display:inline-block;margin-top:12px;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:999px;padding:8px 12px;font-weight:800}.planned .pill{background:#fff7ed;color:#c2410c;border-color:#fed7aa}.built .pill{background:#ecfdf5;color:#047857;border-color:#a7f3d0}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.built:hover{transform:translateY(-2px);transition:.18s ease;box-shadow:0 18px 42px rgba(15,23,42,.1)}
   </style>
 </head>
 <body>
@@ -23,37 +22,68 @@
       <h1>Rust for the AI Era</h1>
       <p class="subtitle">Learn Rust by building useful local AI tools with Ollama. Start with a small Rust survival kit, then build prompt tools, file summarizers, code explainers, retrieval, streaming, and a mini agent loop.</p>
     </section>
-    <section class="grid" aria-label="Lessons">
-      <a class="card" href="lessons/00_install_and_first_program/">
+
+    <h2>Phase 1 — Rust Survival Kit</h2>
+    <p class="phase-note">Small, gradual Rust foundations. Every concept gets a practical angle before the course pivots into Ollama.</p>
+    <section class="grid" aria-label="Phase 1 lessons">
+      <a class="card built" href="lessons/00_install_and_first_program/">
         <strong>Lesson 00 — Install Rust & First Program</strong>
-        <p>Install Rust, write <code>fn main</code>, print <code>x</code>, learn immutability, use <code>mut</code>, and copy <code>x</code> into <code>y</code>.</p>
+        <p>Install Rust, write <code>fn main</code>, print values, learn immutability, use <code>mut</code>, and copy simple data.</p>
         <span class="pill">Read lesson</span>
       </a>
-      <a class="card" href="lessons/00_install_and_first_program/quiz/">
+      <a class="card built" href="lessons/00_install_and_first_program/quiz/">
         <strong>Lesson 00 — Quick Quiz</strong>
         <p>Practice the first Rust basics before moving to data types.</p>
         <span class="pill">Open quiz</span>
       </a>
-            <a class="card" href="lessons/01_data_types/">
+      <a class="card built" href="lessons/01_data_types/">
         <strong>Lesson 01 — Data Types</strong>
-        <p>Learn about scalar types, compound types, tuples, arrays, and how Rust infers types.</p>
+        <p>Learn scalar types, compound types, tuples, arrays, and how Rust infers types.</p>
         <span class="pill">Read lesson</span>
       </a>
-      <a class="card" href="lessons/01_data_types/quiz/">
+      <a class="card built" href="lessons/01_data_types/quiz/">
         <strong>Lesson 01 — Data Types Quiz</strong>
         <p>Practice scalar types, compound types, tuples, arrays, and inference.</p>
         <span class="pill">Open quiz</span>
       </a>
-      <a class="card" href="lessons/02_variable_types/">
+      <a class="card built" href="lessons/02_variable_types/">
         <strong>Lesson 02 — Variable Types</strong>
-        <p>Move gradually from inference to explicit annotations, <code>mut</code>, shadowing, constants, and parse ambiguity.</p>
+        <p>Move from inference to annotations, <code>mut</code>, shadowing, constants, and parse ambiguity.</p>
         <span class="pill">Read lesson</span>
       </a>
-      <a class="card" href="lessons/02_variable_types/quiz/">
+      <a class="card built" href="lessons/02_variable_types/quiz/">
         <strong>Lesson 02 — Variable Types Quiz</strong>
         <p>20 focused questions with balanced A/B/C/D answers.</p>
         <span class="pill">Open quiz</span>
       </a>
+      <div class="card planned"><strong>Lesson 03 — Functions for AI Utilities</strong><p>Parameters, return values, expressions, and tiny helpers like prompt cleaning and token estimation.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 04 — Control Flow for Prompt Decisions</strong><p>Use <code>if</code>, loops, and beginner <code>match</code> to validate prompts before sending them to AI.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 05 — Ownership: Who Owns the Data?</strong><p>Move, clone, scope, <code>String</code>, and drop explained through prompt text ownership.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 06 — Borrowing: Passing Prompts Without Copies</strong><p>References, <code>&amp;T</code>, <code>&amp;mut T</code>, and borrowing rules using practical prompt helpers.</p><span class="pill">Planned</span></div>
+    </section>
+
+    <h2>Phase 2 — Rust + Ollama</h2>
+    <p class="phase-note">After borrowing, the AI era begins. New Rust concepts appear exactly when an Ollama project needs them.</p>
+    <section class="grid" aria-label="Phase 2 lessons">
+      <div class="card planned"><strong>Lesson 07 — First Ollama Request from Rust</strong><p>Use Cargo crates, <code>reqwest</code>, <code>serde_json</code>, and a local model to print a real response.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 08 — Structs by Modeling Ollama JSON</strong><p>Use structs, <code>Serialize</code>, and <code>Deserialize</code> to give request and response data a clear shape.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 09 — Error Handling When Ollama Fails</strong><p>Handle missing servers, wrong models, bad responses, <code>Result</code>, <code>?</code>, and readable errors.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 10 — Enums by Creating AI Task Types</strong><p>Represent summarize, translate, and explain tasks with enum variants and <code>match</code>.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 11 — Collections by Building Prompt History</strong><p>Use <code>Vec</code> to keep simple chat history and understand context.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 12 — Traits by Swapping AI Backends</strong><p>Create a <code>LanguageModel</code> trait with Ollama and mock implementations.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 13 — Modules by Organizing the Ollama Client</strong><p>Split a growing project into <code>main.rs</code>, <code>ollama.rs</code>, <code>prompts.rs</code>, and task modules.</p><span class="pill">Planned</span></div>
+    </section>
+
+    <h2>Phase 3 — Useful Local AI Tools</h2>
+    <p class="phase-note">Students now build tools they can actually use, ending with a safe local Rust AI assistant.</p>
+    <section class="grid" aria-label="Phase 3 lessons">
+      <div class="card planned"><strong>Lesson 14 — AI File Summarizer</strong><p>Read local files, wrap them in prompts, and summarize them with Ollama.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 15 — Rust Code Explainer</strong><p>Read Rust source files and ask a local model to explain them clearly.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 16 — Notes Q&amp;A with Simple Retrieval</strong><p>Search local notes, select relevant context, and answer grounded questions.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 17 — Streaming Responses and Async Rust</strong><p>Teach <code>async</code>, <code>.await</code>, and streaming through visible token output.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 18 — Mini AI Agent Loop</strong><p>Build a Think → Act → Observe loop with <code>MAX_ITERATIONS</code> safety.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 19 — Tools for the Agent</strong><p>Add safe tools: read file, list directory, summarize file, and ask Ollama.</p><span class="pill">Planned</span></div>
+      <div class="card planned"><strong>Lesson 20 — Final Project: Local Rust AI Assistant</strong><p>Combine CLI, Ollama, files, retrieval, streaming, modules, and a mini agent loop.</p><span class="pill">Planned</span></div>
     </section>
   </main>
 </body>
