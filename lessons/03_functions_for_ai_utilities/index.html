@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lesson 03 — Functions for AI Utilities</title>
+  <style>
+    :root{--bg:#f8fafc;--paper:#fff;--ink:#0f172a;--muted:#475569;--blue:#2563eb;--orange:#f97316;--line:#e2e8f0;--green:#16a34a;--red:#dc2626}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#fff,var(--bg),#fff7ed);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}
+    main{width:min(1040px,calc(100% - 32px));margin:0 auto;padding:36px 0 64px}.hero,.card{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:28px;box-shadow:0 24px 70px rgba(15,23,42,.08)}
+    .hero{padding:34px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:0 0 auto;height:9px;background:linear-gradient(90deg,var(--blue),#7c3aed,var(--orange))}
+    .eyebrow{color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}h1{font-size:clamp(42px,7vw,78px);line-height:.9;letter-spacing:-.055em;margin:.1em 0}.subtitle{font-size:20px;color:#334155;max-width:840px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:20px}.card{padding:24px}h2{letter-spacing:-.03em;margin-top:0}pre{background:#0d1117;color:#e5e7eb;border-radius:18px;padding:18px;overflow:auto;font-size:15px;line-height:1.55}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.callout{border-left:5px solid var(--green);background:#f0fdf4;border-radius:16px;padding:14px 16px;color:#14532d}.bad{border-left-color:var(--red);background:#fef2f2;color:#7f1d1d}.blue{border-left-color:var(--blue);background:#eff6ff;color:#1e3a8a}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.btn{display:inline-block;border-radius:999px;padding:12px 18px;font-weight:900;text-decoration:none}.primary{background:var(--blue);color:white}.ghost{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}table{border-collapse:collapse;width:100%;overflow:hidden;border-radius:18px;background:white}th,td{border:1px solid var(--line);padding:12px;text-align:left}th{background:#f1f5f9}ul{padding-left:1.2rem}.compiler-out{background:#1a1a1a;color:#fca5a5;border:1px solid #3f1d1d;border-radius:14px;padding:14px 16px;font-size:13px;line-height:1.5;overflow:auto;white-space:pre-wrap}
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Rust for the AI Era · Lesson 03</p>
+      <h1>Functions for AI Utilities</h1>
+      <p class="subtitle">Learn functions by building tiny helpers we will reuse later: clean a prompt, estimate its size, and build a clear AI instruction. Simple concept, practical use, gradual explanation.</p>
+      <div class="actions">
+        <a class="btn primary" href="quiz/">Open Quiz</a>
+        <a class="btn ghost" href="examples/main.rs">View Example</a>
+        <a class="btn ghost" href="../../">Back to Course Hub</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>1. A function names a useful step</h2>
+        <pre><code>fn print_section(title: &amp;str) {
+    println!("\n{title}");
+    println!("{}", "=".repeat(title.len()));
+}</code></pre>
+        <p class="callout blue">We use this helper to make terminal output easier to read while learning.</p>
+      </article>
+      <article class="card">
+        <h2>2. Parameters need types</h2>
+        <pre><code>fn clean_prompt(prompt: &amp;str) -&gt; String {
+    prompt.trim().to_string()
+}</code></pre>
+        <p>Rust wants every parameter type to be clear. Here, the function receives text and returns a cleaned <code>String</code>.</p>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>3. Return values use <code>-&gt;</code></h2>
+        <pre><code>fn estimate_tokens(text: &amp;str) -&gt; usize {
+    text.len() / 4
+}</code></pre>
+        <p class="callout">No semicolon on the last line means Rust returns that expression.</p>
+      </article>
+      <article class="card">
+        <h2>4. Semicolons matter</h2>
+        <pre><code>fn bad() -&gt; usize {
+    10;
+}</code></pre>
+        <p class="callout bad">The semicolon turns <code>10</code> into a statement. The function no longer returns the number.</p>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>5. Build a reusable AI instruction</h2>
+        <pre><code>fn build_instruction(task: &amp;str, input: &amp;str) -&gt; String {
+    format!("Task: {task}\n\nInput:\n{input}\n\nAnswer clearly and simply.")
+}</code></pre>
+        <p>This is the first small step toward prompt templates, Ollama calls, summarizers, and agents.</p>
+      </article>
+      <article class="card">
+        <h2>6. Intentional compiler lesson</h2>
+        <div class="compiler-out">error[E0308]: mismatched types
+  --&gt; missing_return_value.rs:11:35
+   |
+11 | fn estimate_tokens(text: &amp;str) -&gt; usize {
+   |    ---------------                ^^^^^ expected `usize`, found `()`
+12 |     text.len() / 4;
+   |                   - help: remove this semicolon</div>
+        <p>Rust tells you exactly what happened: the semicolon changed the return expression into no value.</p>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top:20px">
+      <h2>From Simple to Useful</h2>
+      <table>
+        <thead><tr><th>Function</th><th>Rust idea</th><th>AI-era use</th></tr></thead>
+        <tbody>
+          <tr><td><code>print_section</code></td><td>No return value</td><td>Readable debug output</td></tr>
+          <tr><td><code>clean_prompt</code></td><td>Parameter + returned <code>String</code></td><td>Clean user input</td></tr>
+          <tr><td><code>estimate_tokens</code></td><td>Expression return</td><td>Rough context-size check</td></tr>
+          <tr><td><code>build_instruction</code></td><td>Multiple parameters</td><td>Reusable prompt template</td></tr>
+        </tbody>
+      </table>
+      <h2>Recap</h2>
+      <ul>
+        <li>Functions start with <code>fn</code>.</li>
+        <li>Parameters need explicit types.</li>
+        <li>Return types are written with <code>-&gt;</code>.</li>
+        <li>The last expression without a semicolon is returned.</li>
+        <li>Small functions make AI tools easier to build, test, and explain.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

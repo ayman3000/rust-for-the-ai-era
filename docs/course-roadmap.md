@@ -142,7 +142,7 @@ Students learn why ambiguous input text needs clear target types.
 
 ### Lesson 03 — Functions for AI Utilities
 
-**Status:** planned
+**Status:** built
 
 **Goal:** Turn repeated code into small reusable utilities.
 
@@ -162,6 +162,14 @@ Students learn why ambiguous input text needs clear target types.
 **Practical AI-era example:**
 
 Build small helper functions used later by Ollama prompt tools.
+
+**Built deliverables:**
+
+- lesson page
+- recap README
+- runnable `examples/main.rs`
+- intentional `examples/missing_return_value.rs` compiler error
+- 20-question interactive quiz
 
 ### Lesson 04 — Control Flow for Prompt Decisions
 
