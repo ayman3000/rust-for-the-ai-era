@@ -17,7 +17,7 @@
     <section class="hero">
       <p class="eyebrow">Rust for the AI Era · Lesson 03</p>
       <h1>Functions for AI Utilities</h1>
-      <p class="subtitle">Learn functions by building tiny helpers we will reuse later: clean a prompt, estimate its size, and build a clear AI instruction. Simple concept, practical use, gradual explanation.</p>
+      <p class="subtitle">Learn functions without borrowing yet: simple inputs, clear outputs, and tiny AI utility helpers. Borrowing comes later when we need to pass real prompt text.</p>
       <div class="actions">
         <a class="btn primary" href="quiz/">Open Quiz</a>
         <a class="btn ghost" href="examples/main.rs">View Example</a>
@@ -25,31 +25,35 @@
       </div>
     </section>
 
+    <section class="card" style="margin-top:20px">
+      <h2>Teaching Boundary</h2>
+      <p class="callout blue">This lesson avoids string references and borrowing. First we learn the shape of functions. Later, borrowing answers: “How do we pass real prompt text without copying or moving it?”</p>
+    </section>
+
     <section class="grid">
       <article class="card">
         <h2>1. A function names a useful step</h2>
-        <pre><code>fn print_section(title: &amp;str) {
-    println!("\n{title}");
-    println!("{}", "=".repeat(title.len()));
+        <pre><code>fn print_line(width: usize) {
+    println!("{}", "=".repeat(width));
 }</code></pre>
-        <p class="callout blue">We use this helper to make terminal output easier to read while learning.</p>
+        <p class="callout blue">Simple input: a number. Simple action: print a separator line.</p>
       </article>
       <article class="card">
         <h2>2. Parameters need types</h2>
-        <pre><code>fn clean_prompt(prompt: &amp;str) -&gt; String {
-    prompt.trim().to_string()
+        <pre><code>fn estimate_tokens(character_count: usize) -&gt; usize {
+    character_count / 4
 }</code></pre>
-        <p>Rust wants every parameter type to be clear. Here, the function receives text and returns a cleaned <code>String</code>.</p>
+        <p>Rust wants every parameter type to be clear. Here, the input is just a number.</p>
       </article>
     </section>
 
     <section class="grid">
       <article class="card">
         <h2>3. Return values use <code>-&gt;</code></h2>
-        <pre><code>fn estimate_tokens(text: &amp;str) -&gt; usize {
-    text.len() / 4
+        <pre><code>fn prompt_fits_context(estimated_tokens: usize, limit: usize) -&gt; bool {
+    estimated_tokens &lt;= limit
 }</code></pre>
-        <p class="callout">No semicolon on the last line means Rust returns that expression.</p>
+        <p class="callout">This function returns <code>true</code> or <code>false</code>. No borrowing needed.</p>
       </article>
       <article class="card">
         <h2>4. Semicolons matter</h2>
@@ -62,21 +66,21 @@
 
     <section class="grid">
       <article class="card">
-        <h2>5. Build a reusable AI instruction</h2>
-        <pre><code>fn build_instruction(task: &amp;str, input: &amp;str) -&gt; String {
-    format!("Task: {task}\n\nInput:\n{input}\n\nAnswer clearly and simply.")
+        <h2>5. Return owned text</h2>
+        <pre><code>fn build_default_instruction() -&gt; String {
+    String::from("Answer clearly, simply, and with one practical example.")
 }</code></pre>
-        <p>This is the first small step toward prompt templates, Ollama calls, summarizers, and agents.</p>
+        <p>This gives us a useful AI instruction without passing text into the function yet.</p>
       </article>
       <article class="card">
         <h2>6. Intentional compiler lesson</h2>
         <div class="compiler-out">error[E0308]: mismatched types
-  --&gt; missing_return_value.rs:11:35
+  --&gt; missing_return_value.rs:11:47
    |
-11 | fn estimate_tokens(text: &amp;str) -&gt; usize {
-   |    ---------------                ^^^^^ expected `usize`, found `()`
-12 |     text.len() / 4;
-   |                   - help: remove this semicolon</div>
+11 | fn estimate_tokens(character_count: usize) -&gt; usize {
+   |    ---------------                            ^^^^^ expected `usize`, found `()`
+12 |     character_count / 4;
+   |                        - help: remove this semicolon</div>
         <p>Rust tells you exactly what happened: the semicolon changed the return expression into no value.</p>
       </article>
     </section>
@@ -86,10 +90,10 @@
       <table>
         <thead><tr><th>Function</th><th>Rust idea</th><th>AI-era use</th></tr></thead>
         <tbody>
-          <tr><td><code>print_section</code></td><td>No return value</td><td>Readable debug output</td></tr>
-          <tr><td><code>clean_prompt</code></td><td>Parameter + returned <code>String</code></td><td>Clean user input</td></tr>
-          <tr><td><code>estimate_tokens</code></td><td>Expression return</td><td>Rough context-size check</td></tr>
-          <tr><td><code>build_instruction</code></td><td>Multiple parameters</td><td>Reusable prompt template</td></tr>
+          <tr><td><code>print_line</code></td><td>No return value</td><td>Readable debug output</td></tr>
+          <tr><td><code>estimate_tokens</code></td><td>Number input, number output</td><td>Rough context-size check</td></tr>
+          <tr><td><code>prompt_fits_context</code></td><td>Multiple inputs, bool output</td><td>Decide if prompt size is safe</td></tr>
+          <tr><td><code>build_default_instruction</code></td><td>Returned <code>String</code></td><td>Reusable AI instruction</td></tr>
         </tbody>
       </table>
       <h2>Recap</h2>
@@ -98,7 +102,7 @@
         <li>Parameters need explicit types.</li>
         <li>Return types are written with <code>-&gt;</code>.</li>
         <li>The last expression without a semicolon is returned.</li>
-        <li>Small functions make AI tools easier to build, test, and explain.</li>
+        <li>This lesson avoids borrowing so the function concept stays clean.</li>
       </ul>
     </section>
   </main>

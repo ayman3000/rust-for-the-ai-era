@@ -59,7 +59,7 @@ Every lesson follows the same system:
 | 00 | [Install Rust & First Program](lessons/00_install_and_first_program/) | `fn main`, `let`, immutability, `mut`, `println!` | [Open quiz](lessons/00_install_and_first_program/quiz/) |
 | 01 | [Data Types](lessons/01_data_types/) | Scalar and compound types | [Open quiz](lessons/01_data_types/quiz/) |
 | 02 | [Variable Types](lessons/02_variable_types/) | Inference, annotations, `mut`, shadowing, constants | [Open quiz](lessons/02_variable_types/quiz/) |
-| 03 | [Functions for AI Utilities](lessons/03_functions_for_ai_utilities/) | parameters, return values, prompt helper functions | [Open quiz](lessons/03_functions_for_ai_utilities/quiz/) |
+| 03 | [Functions for AI Utilities](lessons/03_functions_for_ai_utilities/) | parameters, return values, expressions, simple AI utility helpers without borrowing | [Open quiz](lessons/03_functions_for_ai_utilities/quiz/) |
 | 04 | Control Flow for Prompt Decisions | `if`, loops, beginner `match`, prompt validation | planned |
 | 05 | Ownership: Who Owns the Data? | move, clone, scope, `String`, drop | planned |
 | 06 | Borrowing: Passing Prompts Without Copies | references, `&T`, `&mut T`, borrowing rules | planned |

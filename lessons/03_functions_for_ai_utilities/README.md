@@ -7,60 +7,67 @@ Official references:
 
 ## Goal
 
-Learn Rust functions by building tiny utilities that will become useful later when we talk to Ollama.
+Learn Rust functions without mixing in ownership or borrowing yet.
 
 By the end, you will understand:
 
 1. How to define a function with `fn`.
-2. How parameters receive values.
+2. How parameters receive simple values.
 3. How return types work with `->`.
 4. The difference between statements and expressions.
-5. Why small functions make AI tools easier to build and test.
+5. How tiny functions become useful building blocks for later AI tools.
+
+## Important Teaching Boundary
+
+This lesson intentionally avoids string references and borrowing.
+
+Why?
+
+Because learners should first understand the shape of a function:
+
+```text
+input values → named function → output value
+```
+
+Borrowing comes later, when students ask the natural question:
+
+> How do we pass real prompt text into functions without copying or moving it?
+
+That question belongs to the borrowing lesson.
 
 ## The Big Idea
 
 A function is a small named action.
 
-In this course, functions are not just syntax. They are how we stop repeating ourselves when building AI tools.
+In this course, functions are not just syntax. They are how we organize useful steps while building AI tools.
 
-Instead of writing messy code like this everywhere:
+For now, we keep the inputs simple:
 
-```rust
-let prompt = "   Explain Rust ownership in one paragraph.   ";
-let prompt = prompt.trim();
-println!("Prompt: {prompt}");
-println!("Estimated tokens: {}", prompt.len() / 4);
-```
+- numbers like `usize`
+- numbers like `u32`
+- booleans like `bool`
+- returned owned text like `String`
 
-We create reusable helpers:
+This keeps the lesson focused.
 
-```rust
-let cleaned = clean_prompt(prompt);
-let tokens = estimate_tokens(&cleaned);
-```
-
-This is simple, but powerful.
-
-## 1. Your First Utility Function
+## 1. A Function with No Return Value
 
 ```rust
-fn print_section(title: &str) {
-    println!("
-{title}");
-    println!("{}", "=".repeat(title.len()));
+fn print_line(width: usize) {
+    println!("{}", "=".repeat(width));
 }
 ```
 
-This function does one job: print a clean section title.
+This function does one job: print a separator line.
 
 It has:
 
-- a name: `print_section`
-- one parameter: `title`
-- one parameter type: `&str`
+- a name: `print_line`
+- one parameter: `width`
+- one parameter type: `usize`
 - no return value
 
-We will use this helper in many future examples because readable output helps students debug.
+No borrowing needed.
 
 ## 2. Parameters Need Types
 
@@ -69,30 +76,30 @@ Rust does not let function parameters be vague.
 This is correct:
 
 ```rust
-fn estimate_tokens(text: &str) -> usize {
-    text.len() / 4
+fn estimate_tokens(character_count: usize) -> usize {
+    character_count / 4
 }
 ```
 
 This is not allowed:
 
 ```rust
-fn estimate_tokens(text) -> usize {
-    text.len() / 4
+fn estimate_tokens(character_count) -> usize {
+    character_count / 4
 }
 ```
 
-Rust wants to know what type `text` is.
+Rust wants to know what type `character_count` is.
 
-That strictness is useful. When we build AI tools, clear input types prevent confusion.
+That strictness is useful. When we build AI tools later, clear input types prevent confusion.
 
 ## 3. Returning a Value
 
 A return type is written after an arrow:
 
 ```rust
-fn estimate_tokens(text: &str) -> usize {
-    text.len() / 4
+fn estimate_tokens(character_count: usize) -> usize {
+    character_count / 4
 }
 ```
 
@@ -101,7 +108,7 @@ The last line has no semicolon.
 That means it is an expression, and Rust returns it.
 
 ```rust
-text.len() / 4
+character_count / 4
 ```
 
 ## 4. Statement vs Expression
@@ -132,12 +139,12 @@ In the runnable example, we build four useful helpers:
 
 | Function | Job |
 |---|---|
-| `print_section(title)` | Make terminal output readable |
-| `clean_prompt(prompt)` | Trim messy user input |
-| `estimate_tokens(text)` | Estimate model cost/context size simply |
-| `build_instruction(task, input)` | Create a reusable prompt template |
+| `print_line(width)` | Make terminal output readable |
+| `estimate_tokens(character_count)` | Estimate model context size simply |
+| `prompt_fits_context(estimated_tokens, limit)` | Decide if a prompt is short enough |
+| `build_default_instruction()` | Return a reusable prompt instruction |
 
-The examples are intentionally simple. Later, these ideas grow into Ollama requests, file summarizers, and agents.
+The examples are intentionally simple. Later, borrowing lets these functions work with real prompt text.
 
 ## Run the Example
 
@@ -148,10 +155,9 @@ rustc examples/main.rs -o /tmp/rust_functions_ai_utilities && /tmp/rust_function
 Expected idea:
 
 ```text
-1. Clean a messy prompt
-=======================
-Raw prompt:     "   Explain Rust ownership using a simple analogy.   "
-Cleaned prompt: "Explain Rust ownership using a simple analogy."
+Prompt character count: 184
+Estimated tokens: 46
+Fits limit? true
 ```
 
 ## Try the Intentional Error
@@ -173,13 +179,13 @@ Open the interactive quiz:
 Add a new function:
 
 ```rust
-fn make_short_answer_prompt(question: &str) -> String
+fn double_limit(limit: usize) -> usize
 ```
 
-It should return a prompt like:
+It should return:
 
-```text
-Answer this in three short bullet points: <question>
+```rust
+limit * 2
 ```
 
-Keep it simple. If the function runs, you can improve it.
+Keep it simple. Text input comes later when borrowing is introduced.

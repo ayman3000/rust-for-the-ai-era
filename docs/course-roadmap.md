@@ -151,17 +151,19 @@ Students learn why ambiguous input text needs clear target types.
 - function parameters
 - return values
 - expressions vs statements
-- `&str` parameters as a gentle preview of borrowing
+- simple Copy inputs like `usize` and `bool`
+- returned owned `String` values without passing text into functions yet
 
 **Gradual examples:**
 
-1. `print_section(title)`
-2. `clean_prompt(prompt)`
-3. `estimate_tokens(text)`
+1. `print_line(width)`
+2. `estimate_tokens(character_count)`
+3. `prompt_fits_context(estimated_tokens, limit)`
+4. `build_default_instruction()`
 
 **Practical AI-era example:**
 
-Build small helper functions used later by Ollama prompt tools.
+Build small helper functions used later by Ollama prompt tools, while intentionally avoiding borrowing until Lesson 06.
 
 **Built deliverables:**
 

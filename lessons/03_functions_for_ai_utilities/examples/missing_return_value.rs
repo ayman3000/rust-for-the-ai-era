@@ -9,11 +9,11 @@ Part of: Rust for the AI Era
 Author:  Ayman Hamed | AI Architect & Instructor
 */
 
-fn estimate_tokens(text: &str) -> usize {
-    text.len() / 4;
+fn estimate_tokens(character_count: usize) -> usize {
+    character_count / 4;
 }
 
 fn main() {
-    let tokens = estimate_tokens("Explain Rust functions simply.");
+    let tokens = estimate_tokens(184);
     println!("Estimated tokens: {tokens}");
 }

@@ -9,18 +9,12 @@ Part of: Rust for the AI Era
 Author:  Ayman Hamed | AI Architect & Instructor
 */
 
-fn print_section(title: &str) {
-    println!("
-{title}");
-    println!("{}", "=".repeat(title.len()));
+fn print_line(width: usize) {
+    println!("{}", "=".repeat(width));
 }
 
-fn clean_prompt(prompt: &str) -> String {
-    prompt.trim().to_string()
-}
-
-fn estimate_tokens(text: &str) -> usize {
-    let rough_estimate = text.len() / 4;
+fn estimate_tokens(character_count: usize) -> usize {
+    let rough_estimate = character_count / 4;
 
     if rough_estimate == 0 {
         1
@@ -29,31 +23,36 @@ fn estimate_tokens(text: &str) -> usize {
     }
 }
 
-fn build_instruction(task: &str, input: &str) -> String {
-    format!("Task: {task}
+fn prompt_fits_context(estimated_tokens: usize, limit: usize) -> bool {
+    estimated_tokens <= limit
+}
 
-Input:
-{input}
-
-Answer clearly and simply.")
+fn build_default_instruction() -> String {
+    String::from("Answer clearly, simply, and with one practical example.")
 }
 
 fn main() {
-    print_section("1. Clean a messy prompt");
-    let raw_prompt = "   Explain Rust ownership using a simple analogy.   ";
-    let cleaned_prompt = clean_prompt(raw_prompt);
-    println!("Raw prompt:     {raw_prompt:?}");
-    println!("Cleaned prompt: {cleaned_prompt:?}");
+    println!("1. Functions can organize AI utility steps");
+    print_line(46);
 
-    print_section("2. Estimate prompt size");
-    let token_estimate = estimate_tokens(&cleaned_prompt);
-    println!("Estimated tokens: {token_estimate}");
+    let prompt_character_count: usize = 184;
+    let context_limit: usize = 120;
 
-    print_section("3. Build a reusable AI instruction");
-    let instruction = build_instruction("Explain", &cleaned_prompt);
+    let estimated_tokens = estimate_tokens(prompt_character_count);
+    let fits_limit = prompt_fits_context(estimated_tokens, context_limit);
+    let instruction = build_default_instruction();
+
+    println!("Prompt character count: {prompt_character_count}");
+    println!("Estimated tokens: {estimated_tokens}");
+    println!("Context limit: {context_limit}");
+    println!("Fits limit? {fits_limit}");
+
+    println!("\n2. Default AI instruction");
+    print_line(25);
     println!("{instruction}");
 
-    print_section("4. The lesson idea");
+    println!("\n3. The lesson idea");
+    print_line(18);
     println!("Functions let us give names to useful steps.");
-    println!("Today: prompt utilities. Later: Ollama clients, summarizers, and agents.");
+    println!("Today: simple inputs and outputs. Later: borrowing lets us pass real prompt text.");
 }
